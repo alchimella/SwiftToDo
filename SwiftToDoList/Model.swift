@@ -30,14 +30,11 @@ func addItem(nameItem: String, isCompleted: Bool = false) {
     
     ToDoItems.append(["name": nameItem, "isCompleted": isCompleted, "date": currentDate])
 //    ToDoItems.append(["name": nameItem, "isCompleted": isCompleted, "date": "20.04.2020"])
-    print(ToDoItems)
     setBage()
 }
 
 func editItem(index: Int, nameItem: String) {
     ToDoItems[index]["name"] = nameItem
-    
-    print("ToDoItems", ToDoItems)
 }
 
 func moveItem(fromIndex: Int, toIndex: Int) {
