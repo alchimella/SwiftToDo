@@ -16,6 +16,7 @@
 		62927D2D244EC44F0052DE92 /* SwiftToDoListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62927D2C244EC44F0052DE92 /* SwiftToDoListUITests.swift */; };
 		62927D3B244ECC4E0052DE92 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62927D3A244ECC4D0052DE92 /* TableViewController.swift */; };
 		62927D3D244ECC8D0052DE92 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62927D3C244ECC8D0052DE92 /* Model.swift */; };
+		62AB6E942456B3C500F3E700 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AB6E932456B3C500F3E700 /* Date+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		62927D2E244EC44F0052DE92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62927D3A244ECC4D0052DE92 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		62927D3C244ECC8D0052DE92 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		62AB6E932456B3C500F3E700 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				62927D13244EC44F0052DE92 /* Assets.xcassets */,
 				62927D15244EC44F0052DE92 /* LaunchScreen.storyboard */,
 				62927D18244EC44F0052DE92 /* Info.plist */,
+				62AB6E932456B3C500F3E700 /* Date+Extension.swift */,
 			);
 			path = SwiftToDoList;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62AB6E942456B3C500F3E700 /* Date+Extension.swift in Sources */,
 				62927D0B244EC44D0052DE92 /* AppDelegate.swift in Sources */,
 				62927D3B244ECC4E0052DE92 /* TableViewController.swift in Sources */,
 				62927D0D244EC44D0052DE92 /* SceneDelegate.swift in Sources */,

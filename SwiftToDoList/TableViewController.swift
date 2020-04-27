@@ -10,7 +10,8 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
-    private let groupedItems = groupItems(ToDoItems)
+    var toDo: ToDoItems = ToDoItems()
+//    private let groupedItems = groupItems(ToDoItems)
     
     @IBAction func pushAddItem(_ sender: Any) {
         let alertController = UIAlertController(title: "Add new item", message: nil, preferredStyle: .alert)
@@ -22,7 +23,7 @@ class TableViewController: UITableViewController {
             let newItem = alertController.textFields![0].text
             
             if newItem != "" {
-                addItem(nameItem: newItem!)
+                self.toDo.addItem(nameItem: newItem!)
                 self.tableView.reloadData()
             }
         }
@@ -79,14 +80,14 @@ class TableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return ToDoItems.count
+        return toDo.toDoItems.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
         // Configure the cell...
-        let currentItem = ToDoItems[indexPath.row]
+        let currentItem = toDo.toDoItems[indexPath.row]
         cell.textLabel?.text = currentItem["name"] as? String
         
         if (currentItem["isCompleted"] as? Bool) == true {
@@ -114,14 +115,14 @@ class TableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") {(action, indexPath) in
-            removeItem(at: indexPath.row)
+            self.toDo.removeItem(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
         
         let edit = UITableViewRowAction(style: .destructive, title: "Edit") {(action, indexPath) in
             let alertController = UIAlertController(title: "Edit new item", message: nil, preferredStyle: .alert)
             alertController.addTextField { (textField) in
-                textField.text = ToDoItems[indexPath.row]["name"] as? String
+                textField.text = self.toDo.toDoItems[indexPath.row]["name"] as? String
                 textField.placeholder = "Enter text"
             }
             
@@ -129,7 +130,7 @@ class TableViewController: UITableViewController {
                 let newItem = alertController.textFields![0].text
                 
                 if newItem != "" {
-                    editItem(index: indexPath.row, nameItem: newItem!)
+                    self.toDo.editItem(index: indexPath.row, nameItem: newItem!)
                     self.tableView.reloadData()
                 }
             }
@@ -156,9 +157,9 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        editItem(index: indexPath.row, nameItem: "Checked")
+        toDo.editItem(index: indexPath.row, nameItem: "Checked")
         
-        if changeState(at: indexPath.row) {
+        if toDo.changeState(at: indexPath.row) {
             tableView.cellForRow(at: indexPath)?.imageView?.image = UIImage(named: "checked.png")
         } else {
             tableView.cellForRow(at: indexPath)?.imageView?.image = UIImage(named: "unchecked.png")
@@ -167,7 +168,7 @@ class TableViewController: UITableViewController {
 
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-        moveItem(fromIndex: fromIndexPath.row, toIndex: to.row)
+        toDo.moveItem(fromIndex: fromIndexPath.row, toIndex: to.row)
         
         tableView.reloadData()
     }
